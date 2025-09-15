@@ -1,6 +1,24 @@
 # Inventory Management System
 
-A comprehensive inventory management system built with Python Flask backend and HTML/CSS frontend, featuring advanced forecasting capabilities and real-time analytics.
+A comprehensive inventory management system built with Python Flask backend and HTML/CSS frontend, featuring advanced forecasting capabilities and real-time analytics. **Now production-ready for Render deployment!**
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+
+## 🌐 Live Demo & Deployment
+
+**🚀 Ready for Production**: This application is fully configured for deployment on [Render](https://render.com) with MySQL database support.
+
+### Quick Deploy to Render
+1. **Fork this repository** to your GitHub account
+2. **Follow the complete deployment guide**: [RENDER_DEPLOYMENT_GUIDE.md](./RENDER_DEPLOYMENT_GUIDE.md)
+3. **Your app will be live** at: `https://your-app-name.onrender.com`
+
+### Production Features
+- ✅ **Gunicorn WSGI server** for production performance
+- ✅ **Environment-based configuration** for security
+- ✅ **MySQL database** with complete schema
+- ✅ **Health check endpoints** for monitoring
+- ✅ **Production-ready logging** and error handling
 
 ## ⚡ Quick Start
 
@@ -157,44 +175,54 @@ curl http://localhost:5001/api/v1/vendors
 
 ## 📊 API Endpoints
 
-### Vendors
-- `GET /api/v1/vendors` - Get all vendors
+**Base URL**: `http://localhost:5001/api/v1` (local) | `https://your-app.onrender.com/api/v1` (production)
+
+### 🏢 Vendors
+- `GET /api/v1/vendors` - Get all vendors with statistics
+- `GET /api/v1/vendors/{id}` - Get specific vendor with performance data
 - `POST /api/v1/vendors` - Create new vendor
 - `PUT /api/v1/vendors/{id}` - Update vendor
 - `DELETE /api/v1/vendors/{id}` - Delete vendor
 
-### Warehouses
-- `GET /api/v1/warehouses` - Get all warehouses
+### 🏭 Warehouses
+- `GET /api/v1/warehouses` - Get all warehouses with utilization
+- `GET /api/v1/warehouses/{id}` - Get specific warehouse
 - `POST /api/v1/warehouses` - Create new warehouse
 - `PUT /api/v1/warehouses/{id}` - Update warehouse
-- `DELETE /api/v1/warehouses/{id}` - Delete warehouse
 
-### Products
-- `GET /api/v1/products` - Get all products
+### 📦 Products
+- `GET /api/v1/products` - Get all products with stock information
+- `GET /api/v1/products/{id}` - Get specific product
 - `POST /api/v1/products` - Create new product
 - `PUT /api/v1/products/{id}` - Update product
-- `DELETE /api/v1/products/{id}` - Delete product
 - `POST /api/v1/products/{id}/stock` - Update stock level
 
-### Shipments
-- `GET /api/v1/shipments` - Get all shipments
-- `POST /api/v1/shipments` - Create new shipment
-- `GET /api/v1/shipments/{id}` - Get shipment details
+### 🚚 Shipments
+- `GET /api/v1/shipments` - Get all shipments with details
+- `GET /api/v1/shipments/{id}` - Get shipment with items
+- `POST /api/v1/shipments` - Create new shipment with items
 
-### Orders
-- `GET /api/v1/orders` - Get all orders
-- `POST /api/v1/orders` - Create new order
-- `GET /api/v1/orders/{id}` - Get order details
+### 📋 Orders
+- `GET /api/v1/orders` - Get all orders with details
+- `GET /api/v1/orders/{id}` - Get order with items
+- `POST /api/v1/orders` - Create new order with items
 
-### Forecasting
+### 📈 Forecasting
 - `POST /api/v1/forecast/generate` - Generate demand forecast
 - `POST /api/v1/forecast/evaluate` - Evaluate forecast accuracy
 
-### Analytics
-- `GET /api/v1/analytics/dashboard` - Get dashboard data
-- `GET /api/v1/analytics/low-stock` - Get low stock alerts
-- `GET /api/v1/analytics/vendor-performance` - Get vendor performance
-- `GET /api/v1/analytics/warehouse-utilization` - Get warehouse utilization
+### 📊 Analytics
+- `GET /api/v1/analytics/dashboard` - Executive dashboard data
+- `GET /api/v1/analytics/low-stock` - Low stock alerts
+- `GET /api/v1/analytics/vendor-performance` - Vendor performance analysis
+- `GET /api/v1/analytics/warehouse-utilization` - Warehouse utilization
+- `GET /api/v1/analytics/demand-supply` - Demand vs supply analysis
+- `GET /api/v1/analytics/sales-trends` - Sales trend analysis
+- `GET /api/v1/analytics/top-products` - Top performing products
+- `GET /api/v1/analytics/inventory-turnover` - Inventory turnover analysis
+
+### 🔍 Health Check
+- `GET /api/v1/health` - Application and database health status
 
 ## 🎯 Usage
 
@@ -328,7 +356,24 @@ The system automatically monitors stock levels and provides alerts when:
 
 ## 🚀 Deployment
 
-### Production Deployment
+### 🌐 Render Deployment (Recommended)
+
+**Complete deployment guide**: [RENDER_DEPLOYMENT_GUIDE.md](./RENDER_DEPLOYMENT_GUIDE.md)
+
+#### Files for Deployment:
+- ✅ `Procfile` - Gunicorn configuration
+- ✅ `requirements.txt` - Updated with production dependencies
+- ✅ `.env.example` - Environment variables template
+- ✅ `database_schema.sql` - Complete MySQL schema
+
+#### Deployment Steps:
+1. **Create MySQL database** on Render
+2. **Import database schema** using provided SQL file
+3. **Deploy Flask app** from GitHub repository
+4. **Configure environment variables** as specified in guide
+5. **Access your live app** at provided Render URL
+
+### Traditional Production Deployment
 1. Set `DEBUG=False` in environment variables
 2. Use a production WSGI server (e.g., Gunicorn)
 3. Configure reverse proxy (e.g., Nginx)
@@ -457,7 +502,16 @@ For support and questions:
 
 ## 🔄 Updates
 
-### Version 2.2.0 (Current)
+### Version 2.3.0 (Current) - Production Ready
+- **🚀 Render Deployment Ready** - Complete production deployment configuration
+- **📦 Procfile Added** - Gunicorn WSGI server configuration for production
+- **🔧 Environment Configuration** - Production-ready environment variable setup
+- **📋 Deployment Guide** - Comprehensive step-by-step deployment instructions
+- **🔍 Health Check Endpoint** - Application and database monitoring
+- **🛡️ Security Enhancements** - Production security best practices implemented
+- **📊 Enhanced API Documentation** - Complete endpoint reference with examples
+
+### Version 2.2.0
 - **Rebuilt Warehouses Frontend** - Complete warehouse management functionality restored
 - **Fixed Vendor and Warehouse Creation** - Backend now returns proper IDs for new records
 - **Enhanced Real-time Updates** - Improved data synchronization across all sections

@@ -8,6 +8,7 @@ from config import Config
 import logging
 from datetime import datetime, date
 import json
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -502,4 +503,5 @@ def internal_error(error):
     return jsonify({'success': False, 'error': 'Internal server error'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=Config.DEBUG, host='0.0.0.0', port=5001)
+    port = int(os.getenv('PORT', 5001))
+    app.run(debug=Config.DEBUG, host='0.0.0.0', port=port)
